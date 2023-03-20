@@ -26,7 +26,7 @@ function Detail(props) {
   useEffect(() => {
     setTimeout(() => {
       setFade('end')
-    }, 100)
+    }, 1)
     return() => {
       setFade('');
     }
