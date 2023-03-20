@@ -6,6 +6,7 @@ import Main from './components/MainPage';
 import data from './data';
 import { Routes, Route, Link , useNavigate, Outlet } from 'react-router-dom';
 import Detail from './components/Detail';
+import axios from 'axios'; //라이브러리
 
 function App() {
 
@@ -29,6 +30,27 @@ function App() {
           <>
             <div className="main-blog"></div>
             <Main shoes={shoes}/>
+            <button className="btn" onClick={() => {
+              axios.get('https://codingapple1.github.io/shop/data2.json')
+              .then((result) => {
+                 let copy = [...shoes, ...result.data];
+
+                 console.log(result.data); 
+                 setShoes(copy);
+                })
+              .catch((error) => console.log(error));
+              console.log(shoes);
+            }}>더보기..</button>
+            <button className="btn" onClick={() => {
+              axios.get('https://codingapple1.github.io/shop/data2.json')
+              .then((list) => {
+                let copy = [...shoes, ...list.data];
+
+                console.log(copy);
+                setShoes(copy);
+              })
+              .catch((error) => console.log(error));
+            }}>더 많은 정보를 원해요!</button>
           </>
         }/>
         <Route path='/detail/:id' element={<Detail shoes={shoes}/>}/>

@@ -20,5 +20,8 @@
   transition: 0.5s ease-in-out;
 }
 .btn-danger{
-  margin-left:20px;
+  margin-left: 20px;
+}
+.colPad{
+  margin-top: 50px;
 }
