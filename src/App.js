@@ -9,7 +9,7 @@ import Detail from './components/Detail';
 import axios from 'axios'; //라이브러리
 
 function App() {
-
+  const [counter, setCounter] = useState(1);
   const [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
 
@@ -29,28 +29,35 @@ function App() {
         <Route path='/' element={
           <>
             <div className="main-blog"></div>
-            <Main shoes={shoes}/>
-            <button className="btn" onClick={() => {
-              axios.get('https://codingapple1.github.io/shop/data2.json')
-              .then((result) => {
-                 let copy = [...shoes, ...result.data];
+            <Main shoes={shoes}/> {/*메인 페이지 호출 */}
+            <button className="btn lis" onClick={() => {
+              if(counter == 1){
+                axios.get('https://codingapple1.github.io/shop/data2.json')
+                  .then((result) => {
+                  let copy = [...shoes, ...result.data];
 
-                 console.log(result.data); 
-                 setShoes(copy);
+                  console.log(result.data);
+                  setShoes(copy);
                 })
-              .catch((error) => console.log(error));
-              console.log(shoes);
-            }}>더보기..</button>
-            <button className="btn" onClick={() => {
-              axios.get('https://codingapple1.github.io/shop/data2.json')
-              .then((list) => {
-                let copy = [...shoes, ...list.data];
+                .catch((error) => console.log(error));
+              } else if(counter == 2){
+                axios.get('https://codingapple1.github.io/shop/data3.json')
+                  .then((result) => {
+                  let copy = [...shoes, ...result.data];
 
-                console.log(copy);
-                setShoes(copy);
-              })
-              .catch((error) => console.log(error));
-            }}>더 많은 정보를 원해요!</button>
+                  console.log(result.data);
+                  setShoes(copy);
+                })
+                .catch((error) => console.log(error));
+              } else{
+                alert('더 이상의 페이지가 없습니다.');
+              }
+              setCounter(counter + 1);
+
+              console.log(counter);
+            }}>
+             더보기
+             </button>
           </>
         }/>
         <Route path='/detail/:id' element={<Detail shoes={shoes}/>}/>

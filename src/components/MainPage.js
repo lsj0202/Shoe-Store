@@ -8,7 +8,7 @@ function MainPage(props) {
 
   return (
     <Container className>
-      <Row>
+      <Row className="row">
         {
           props.shoes.map((a, i) => {
             return(
