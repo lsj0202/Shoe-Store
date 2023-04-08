@@ -31,8 +31,6 @@ function App() {
     })
   })
   console.log(result.data);
-  console.log(result.isLodaing);
-  console.log(result.error);
 
   return (
     <div className="App">
@@ -44,7 +42,11 @@ function App() {
             <Link className="links" to='/about'>회사 정보</Link>
             <Link className="links" to='/Cart'>쇼핑 카트</Link>
           </Nav>
-          <Nav className="ms-auto">{ result.isLodaing ? '로딩중' : result.data.name }</Nav>
+          <Nav className="ms-auto">
+            {result.isLoading && '로딩중'}
+            {result.error && '에러남'}
+            {result.data && result.data}
+            </Nav>
         </Container>
       </Navbar>
 
