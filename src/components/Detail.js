@@ -10,7 +10,8 @@ function Detail(props) {
   const [content, setContent] = useState('');
   const [aler, setAler] = useState(false);
   const [tab, setTab] = useState(0);
-
+  
+  
   useEffect(() => {
     if(isNaN(content) == true){
       alert("숫자만 입력하세요");
