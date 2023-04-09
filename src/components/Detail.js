@@ -2,7 +2,7 @@
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import React, { useState,useEffect } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import '../App.css';
 
 function Detail(props) {
@@ -11,7 +11,7 @@ function Detail(props) {
   const [aler, setAler] = useState(false);
   const [tab, setTab] = useState(0);
   
-  
+
   useEffect(() => {
     if(isNaN(content) == true){
       alert("숫자만 입력하세요");
